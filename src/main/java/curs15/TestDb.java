@@ -18,6 +18,22 @@ public class TestDb {
 		//metoda care primeste obiectul de tip connection si queryul si executa
 		// query ul pe connexiuea primita
 		System.out.println(DBQuery.dbSelectQuery(conn, selectQuery));	
+		
+		//update pe baza de date
+		String updateQuery = "update customers set CustomerName = 'ModelMada' where CustomerName = 'TestCristi';";
+		DBQuery.dbUpdateQuery(conn, updateQuery);
+		//facem select ca sa vedem updateul
+		String selectQuery2 = "select * from customers;";
+		System.out.println(DBQuery.dbSelectQuery(conn, selectQuery2));	
+		
+		//delete client
+		String deleteQuery = "delete from customers where CustomerName='ModelMada';";
+		DBQuery.dbDeleteQuery(conn, deleteQuery);
+		//facem select ca sa vedem updateul
+		String selectQuery3 = "select * from customers;";
+		System.out.println(DBQuery.dbSelectQuery(conn, selectQuery3));	
+
+		
 		//inchidem obiectul de tip connection
 		DbConnection.closeDbConnection(conn);
 		
